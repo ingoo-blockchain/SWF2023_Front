@@ -55,7 +55,7 @@ const MenuUser = styled.ul`
 const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpenModal }) => {
     return (
         <>
-            <div className="flex flex-row justify-between relative">
+            <div className="relative flex flex-row justify-between">
                 <Title>LTL</Title>
                 <Menu>
                     <li>
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
                     </li>
                 </MenuUser>
             </div>
-            <div className="bg-gray-200 w-full h-6"></div>
+            <div className="w-full h-6 bg-gray-200"></div>
         </>
     )
 }
