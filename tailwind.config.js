@@ -80,6 +80,9 @@ module.exports = {
                     },
                 },
             },
+            backgroundColor: {
+                write: '#2086D0',
+            },
         },
         maxHeight: {
             0: '0',
