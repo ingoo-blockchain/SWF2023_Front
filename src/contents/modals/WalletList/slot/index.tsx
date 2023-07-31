@@ -1,30 +1,33 @@
 import Card from '@/src/components/card'
+import UserProfile from '../profile'
+import { useEffect, useState } from 'react'
 
-interface ReviewSlotProps extends StyledProps {
-    title: String
-}
-const ReviewSlot: React.FC<ReviewSlotProps> = ({ title }) => {
+const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
+    const [isAnswered, setIsAnswered] = useState<boolean>(false)
+
+    useEffect(() => {
+        setIsAnswered((prev) => answered)
+    }, [answered])
     return (
-        <Card
-            content={
-                <>
-                    <div className={`flex justify-between pb-10`}>
-                        <h3 className="w-full">
-                            <span className={`bg-red-700 text-white text-4xl font-semibold`}>Q.</span>
-                            <span className={`text-4xl text-black font-semibold`}>{title}</span>
-                        </h3>
-                        <div className={`w-1/3`}>
-                            <span className={`text-2xl`}>{'0.00001 ETH'}</span>
-                            <span className={`text-xs text-gray-300`}>{`(약 100,000원)`}</span>
-                        </div>
+        <Card>
+            <section className="flex p-5 shadow-xl">
+                <div className={`w-2/3`}>
+                    <h3 className="w-full font-bold pb-2">
+                        {isAnswered ? <span className="text-purple-700 mr-2">{'[답변완료]'}</span> : <></>}
+                        <span className="text-lg">{title}</span>
+                    </h3>
+                    <div
+                        className={`w-full text-gray-600 font-semibold  text-ellipsis whitespace-nowrap overflow-hidden`}
+                    >
+                        {content}
                     </div>
-                    <div id="content" className={`flex justify-between `}>
-                        {`블록체인 공부 어떻게 하냐고 1000번쨰 질문했다.`}
-                    </div>
-                </>
-            }
-        />
+                </div>
+                <div className={`flex-1`}>
+                    <UserProfile id="dsadkf" name="name" direction="none" />
+                </div>
+            </section>
+        </Card>
     )
 }
 
-export default ReviewSlot
+export default FundSlot
