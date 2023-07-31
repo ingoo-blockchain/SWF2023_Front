@@ -2,6 +2,7 @@ import { SetStateAction } from 'react'
 import WalletConnectButton from './WalletConnectButton'
 import styled from 'styled-components'
 import UserBox from './UserBox'
+import { LinkType } from '@/src/utils/LinkType'
 
 interface HeaderProps {
     isConnected: boolean
@@ -57,9 +58,15 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
             <div className="flex flex-row justify-between relative">
                 <Title>LTL</Title>
                 <Menu>
-                    <li>Posting</li>
-                    <li>DAO</li>
-                    <li>Punding</li>
+                    <li>
+                        <LinkType to="/" children={'Posting'}></LinkType>
+                    </li>
+                    <li>
+                        <LinkType to="/DAO" children={'DAO'}></LinkType>
+                    </li>
+                    <li>
+                        <LinkType to="/Punding" children={'Punding'}></LinkType>
+                    </li>
                 </Menu>
                 <MenuUser>
                     <li className="user-box-warp">
