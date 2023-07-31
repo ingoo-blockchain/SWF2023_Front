@@ -27,7 +27,6 @@ const UserBox: React.FC<UserBoxProps> = ({ isConnected, isLoading, user }) => {
                     <DropDownMenu />
                 </DropDown>
             </span>
-            <span onClick={handleClick}>로그아웃</span>
         </>
     )
 }

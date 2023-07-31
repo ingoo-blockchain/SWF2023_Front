@@ -44,7 +44,7 @@ const DropDown: React.FC<DropDownProps> = ({ title, children }) => {
         <div className="relative z-10">
             <button
                 onClick={() => setIsOpenMenu((prev) => !prev)}
-                className=" flex items-center text-sm font-medium text-gray-900 rounded-full hover:text-green-600 dark:hover:text-green-300 dark:text-white hover:dark:bg-gray-700 py-1.5 px-1 transition duration-150"
+                className=" flex items-center text-sm font-medium text-white rounded-full hover:text-green-600 dark:hover:text-green-300 dark:text-white hover:dark:bg-gray-700 py-1.5 px-1 transition duration-150"
             >
                 {/* <img className="w-8 h-8 mr-2 ml-1 rounded-full" src={} /> */}
                 {title}
