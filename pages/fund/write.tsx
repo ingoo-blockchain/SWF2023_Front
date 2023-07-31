@@ -1,4 +1,4 @@
-import ReviewSlot from '@/src/contents/modals/WalletList/slot'
+import AnswerCard from '@/src/contents/modals/WalletList/answerCard'
 import BaseLayout from '@/src/layout/BaseLayout'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -13,7 +13,6 @@ const Home = () => {
             </Head>
 
             <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
-                <ReviewSlot title={'이것은 타이틀 크하하하'} children/>
             </main>
         </>
     )
