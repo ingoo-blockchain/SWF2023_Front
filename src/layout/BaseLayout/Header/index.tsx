@@ -49,6 +49,7 @@ const MenuUser = styled.ul`
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-right: 20px;
     }
 `
 
@@ -62,10 +63,10 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
                         <LinkType to="/" children={'Posting'}></LinkType>
                     </li>
                     <li>
-                        <LinkType to="/DAO" children={'DAO'}></LinkType>
+                        <LinkType to="/dao" children={'DAO'}></LinkType>
                     </li>
                     <li>
-                        <LinkType to="/Punding" children={'Punding'}></LinkType>
+                        <LinkType to="/punding" children={'Punding'}></LinkType>
                     </li>
                 </Menu>
                 <MenuUser>
