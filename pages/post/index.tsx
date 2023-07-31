@@ -52,7 +52,7 @@ const Post = () => {
                 </PostBenner>
                 <div className="bg-white">
                     <div className="w-full">
-                        <div className="w-full flex">
+                        <div className="flex w-full">
                             <PostItem></PostItem>
                             <PostItem></PostItem>
                             <PostItem></PostItem>
