@@ -8,7 +8,7 @@ interface CardProps extends StyledProps {
 
 const Card: React.FC<CardProps> = ({ children, className = "" }) => {
     return (
-        <section className={`w-full bg-white flex flex-col rounded-sm border min-h-fit select-none mb-5 ${className}`}>
+        <section className={`w-full bg-white flex flex-col rounded-sm border min-h-fit select-none ${className}`}>
             {children}
         </section>
     )

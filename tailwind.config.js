@@ -101,10 +101,12 @@ module.exports = {
                 slot: '780px',
                 '900px': '900px',
                 profile: '45px',
-                '1/10': '10%'
+                '1/10': '10%',
+                '100vh': '100vh'
             },
             width: {
                 profile: '45px',
+                '100vw': '100vw'
             },
             backdropBlur: {
                 '40': '40%'
