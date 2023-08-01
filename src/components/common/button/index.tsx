@@ -57,7 +57,7 @@ export const Button = ({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`${buttonStyled}${buttonStyle} ${bgColor} ${txtSize} ${weight} ${size}`}
+            className={`${buttonStyled} ${buttonStyle} ${bgColor} ${txtSize} ${weight} ${size}`}
         >
             {children}
         </button>

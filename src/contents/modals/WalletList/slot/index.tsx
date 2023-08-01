@@ -16,7 +16,7 @@ const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
 
     return (
         <>
-            <Card>
+            <Card className="hover:bg-gray-100">
                 <section className="flex p-5 shadow-xl justify-between" onClick={onOpenView}>
                     <div className={`w-2/3`}>
                         <h3 className="w-full pb-2 font-bold">
@@ -24,7 +24,7 @@ const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
                             <span className="text-lg">{title}</span>
                         </h3>
                         <div
-                            className={`w-full text-gray-600 font-semibold  text-ellipsis whitespace-nowrap overflow-hidden`}
+                            className={`w-full text-gray-600 font-semibold  text-ellipsis whitespace-nowrap overflow-hidden `}
                         >
                             {content}
                         </div>
