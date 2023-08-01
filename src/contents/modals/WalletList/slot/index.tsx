@@ -16,7 +16,7 @@ const FundSlot: React.FC<FundSlotList> = ({ title, content, answered, user_id })
 
     return (
         <>
-            <Card className="hover:bg-gray-100">
+            <Card className="hover:bg-gray-100 mb-5">
                 <section className="flex p-5 shadow-xl justify-between" onClick={onOpenView}>
                     <div className={`w-2/3`}>
                         <h3 className="w-full pb-2 font-bold">
