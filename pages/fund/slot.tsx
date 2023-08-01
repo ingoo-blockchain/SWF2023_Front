@@ -1,3 +1,4 @@
+import { Button } from '@/src/components/common/button'
 import FundSlot from '@/src/contents/modals/WalletList/slot'
 import BaseLayout from '@/src/layout/BaseLayout'
 import { Inter } from 'next/font/google'
@@ -12,6 +13,26 @@ const Home = () => {
             title: 'title',
             content: '너무 긴 컨텐츠',
             answered: true,
+        },
+        {
+            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            answered: true,
+        },
+        {
+            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            answered: true,
+        },
+        {
+            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            answered: true,
+        },
+        {
+            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            answered: false,
         },
         {
             title: '어쩌구 저쩌구 이거 안돼요 으아앙',
@@ -42,15 +63,19 @@ const Home = () => {
                 <title>리뷰 - 메인페이지</title>
             </Head>
 
-            <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
-                <div>
-                    <Link href={'/fund/view'}>
-                        <div className=' text-white font-semibold bg-write pr-5 pl-5 pt-3 pb-3 rounded-sm'>Write</div>
+            <main className={`flex flex-col h-fit items-center justify-start pt-10 pb-10 pr-24 pl-24 ${inter.className}`}>
+                <div className="flex w-full justify-end">
+                    <Link href={'/fund/write'}>
+                        <Button color="red" size="w-fit" style="pr-5 pl-5 pt-2 pb-2 m-4" fontSize="sm">
+                            Write
+                        </Button>
                     </Link>
                 </div>
-                {fundTestList.map((item: FundSlotList) => (
-                    <FundSlot title={item.title} content={item.content} answered = {item.answered}/>
-                ))}
+                <div className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 ">
+                    {fundTestList.map((item: FundSlotList) => (
+                        <FundSlot title={item.title} content={item.content} answered={item.answered} />
+                    ))}
+                </div>
             </main>
         </>
     )

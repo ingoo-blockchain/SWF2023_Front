@@ -1,3 +1,4 @@
+import AnswerCard from '@/src/contents/modals/WalletList/answerCard'
 import FundCard from '@/src/contents/modals/WalletList/fundCard'
 import BaseLayout from '@/src/layout/BaseLayout'
 import { Inter } from 'next/font/google'
@@ -17,8 +18,11 @@ const Home = () => {
                 <title>리뷰 - 메인페이지</title>
             </Head>
 
-            <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
-                <FundCard info={fundCardTest}/>
+            <main className={`flex h-900px flex-col items-center justify-start p-10 ${inter.className}`}>
+                <FundCard info={fundCardTest} />
+                <section className='w-full flex-1 overflow-auto'>
+                    <AnswerCard />
+                </section>
             </main>
         </>
     )
