@@ -14,22 +14,24 @@ import { toast } from 'react-toastify'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 export const Modify = () => {
+    // const [creatorFee, setCreatorFee] = useState('0%')
+    // const [isDuplicated, setIsDuplicated] = useState(false)
+    // const [isFocused, setIsFocused] = useState('')
+
+    // const handleCheckBox = (option: string) => {
+    //     setCreatorFee(option)
+    // }
+
     const success = () => toast.success('Collection creation completed !')
 
     const [collectionLogo, setCollectionLogo] = useState('')
-    const [creatorFee, setCreatorFee] = useState('0%')
-    const [isDuplicated, setIsDuplicated] = useState(false)
-    const [isFocused, setIsFocused] = useState('')
+
     const [isLoading, setIsLoading] = useState(false)
     const [isOpenAlert, setIsOpenAlert] = useState(false)
 
-    const collectionName = useInput('')
-    const collectionUrl = useInput('')
+    const userName = useInput('')
+    const userPassword = useInput('')
     const collectionDescription = useInput('')
-
-    const handleCheckBox = (option: string) => {
-        setCreatorFee(option)
-    }
 
     // const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -52,37 +54,27 @@ export const Modify = () => {
                     <SectionTitle>회원수정</SectionTitle>
                     <Label htmlFor="name">유저 이름</Label>
                     <InputBox
-                        value={collectionName.value}
-                        // onChange={collectionName.onChange}
+                        value={userName.value}
+                        onChange={userName.onChange}
                         // onInput={handleInputChange}
                         name="name"
                         icon="mdi:collection"
-                        placeholder="이름을 정해주세요"
                     />
-
-                    <InputCheck id="symbol" isFocused={isFocused} isDuplicated={isDuplicated} />
-                    <Label htmlFor="description">유저 설명</Label>
+                    <Label htmlFor="url">유저 베스퉈드</Label>
+                    <InputBox
+                        value={userPassword.value}
+                        onChange={userPassword.onChange}
+                        // onInput={handleInputChange}
+                        name="url"
+                        icon="mdi:web"
+                    />
+                    <Label htmlFor="description">나를 꾸며보세요</Label>
                     <TextArea
                         value={collectionDescription.value}
                         onChange={collectionDescription.onChange}
                         id="description"
-                        placeholder="당신을 소개해 주세요"
                     />
-                    <Label htmlFor="url">Collection URL</Label>
-                    <InputBox
-                        value={collectionUrl.value}
-                        onChange={collectionUrl.onChange}
-                        // onInput={handleInputChange}
-                        name="url"
-                        icon="mdi:web"
-                        placeholder="URL에는 소문자, 숫자, 하이픈(-)만 사용할 수 있습니다"
-                    />
-                    <InputCheck id="url" isFocused={isFocused} isDuplicated={isDuplicated} />
-                    <Label htmlFor="creatorFee">Creator Royalty</Label>
-                    <CheckBox options={['0%', '2.5%', '5%']} onChange={handleCheckBox} selectedOption={creatorFee} />
-                    <Label htmlFor="logo">Thumbnail</Label>
 
-                    <FileInputBox state={collectionLogo} setState={setCollectionLogo} />
                     {isLoading ? (
                         <Button type="submit" color="blue" disabled>
                             <LoadingSpinner /> uploading...

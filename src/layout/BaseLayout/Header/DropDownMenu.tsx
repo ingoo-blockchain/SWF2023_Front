@@ -36,12 +36,7 @@ const DropDownMenu: React.FC = () => {
                         로그인
                     </button>
                 </MenuItem>
-                <MenuItem>
-                    <button className="flex item-center" onClick={handleUserModify}>
-                        <Icon icon="clarity:plus-line" className="mr-2 text-lg" />
-                        회원수정
-                    </button>
-                </MenuItem>
+
                 <MenuItem>
                     <button className="flex item-center" onClick={handleLogout}>
                         <Icon icon="akar-icons:link-chain" className="mr-2 text-lg" />
