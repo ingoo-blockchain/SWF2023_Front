@@ -93,6 +93,7 @@ const Home = () => {
 
         slotRef.current.addEventListener('scroll', handleScroll)
         return () => {
+            if (!slotRef.current) return
             slotRef.current.removeEventListener('scroll', handleScroll)
         }
     }, [fetchNextPage, hasNextPage])
@@ -114,7 +115,7 @@ const Home = () => {
                     </Link>
                 </div>
                 <div
-                    className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 "
+                    className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 scroll-m-0 scroll-p-0"
                     ref={slotRef}
                 >
                     {isSuccess &&
