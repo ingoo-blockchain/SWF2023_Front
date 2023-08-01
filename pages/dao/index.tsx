@@ -42,7 +42,7 @@ const Dao = () => {
                 <EditorWarp>
                     <label className="text-4xl font-bold">title</label>
                     <InputType name="title"></InputType>
-                    <label className="text-4xl font-bold mb-6 block">content</label>
+                    <label className="block mb-6 text-4xl font-bold">content</label>
                     <Editor textareaName="content"></Editor>
                     <div className="btn-warp">
                         <button type="submit">등록</button>

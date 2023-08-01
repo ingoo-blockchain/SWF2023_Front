@@ -28,7 +28,7 @@ const PostItem = ({ thumbnail, profile, title, content, date, writer, url }: Pos
                         className="block w-80 h-40 object-cover object-center bg-gray-400"
                     />
                 </div>
-                <div className="mt-6 mr-5 ml-5 flex flex-col">
+                <div className="flex flex-col mt-6 ml-5 mr-5">
                     <div>
                         <p className="text-black text-sm font-bold mb-3">{title}</p>
                     </div>
