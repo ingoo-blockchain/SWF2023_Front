@@ -4,6 +4,7 @@ import request from '@/src/utils/request'
 import { useEffect } from 'react'
 import tw from 'tailwind-styled-components'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useContract } from '../../../hooks/ethers'
 
 const WalletListWrapper = tw.div`
     relative text-md font-normal text-gray-500 dark:text-gray-400
@@ -49,10 +50,17 @@ const WalletList: React.FC<WalletListProps> = ({ close }) => {
     }
 
     useEffect(() => {
+        const { governanceToken } = useContract()
         if (!address) return
         ;(async () => {
-            const { data } = await request.post('/users', { account: address })
-            console.log(data)
+            const {
+                data: { isNew },
+            } = await request.post('/users', { account: address })
+            console.log(isNew)
+            if (isNew) {
+                // 이더스
+                await governanceToken.delegate(address)
+            }
         })()
     }, [address])
 
