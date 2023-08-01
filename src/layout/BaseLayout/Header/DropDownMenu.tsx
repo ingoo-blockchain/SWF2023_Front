@@ -13,6 +13,13 @@ const DropDownMenu: React.FC = () => {
     const handleMypage = () => {
         router.push('/mypage')
     }
+
+    const handleUserLogin = () => {
+        router.push('/login')
+    }
+    const handleUserModify = () => {
+        router.push('/modify')
+    }
     return (
         <>
             <TopMenu>Account</TopMenu>
@@ -24,9 +31,15 @@ const DropDownMenu: React.FC = () => {
                     </button>
                 </MenuItem>
                 <MenuItem>
-                    <button className="flex item-center" onClick={handleMypage}>
+                    <button className="flex item-center" onClick={handleUserLogin}>
                         <Icon icon="material-symbols:login" className="mr-2 text-lg" />
-                        Login
+                        로그인
+                    </button>
+                </MenuItem>
+                <MenuItem>
+                    <button className="flex item-center" onClick={handleUserModify}>
+                        <Icon icon="clarity:plus-line" className="mr-2 text-lg" />
+                        회원수정
                     </button>
                 </MenuItem>
                 <MenuItem>

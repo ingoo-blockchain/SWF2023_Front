@@ -9,7 +9,6 @@ import { InputBox } from '@/src/components/common/input'
 import { FileInputCircle } from '@/src/components/common/input/fileinputcircle'
 import { Alert } from '@/src/components/common/alert'
 import { useSign } from '@/src/hooks/useSign'
-import PostItem from '@/pages/post/PostCard'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 // import { MyNFT, Activity, Favorites } from './index'
