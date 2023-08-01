@@ -10,64 +10,66 @@ import axios from 'axios'
 const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
-    const fundTestList: Array<FundSlotList> = [
-        {
-            title: 'title',
-            content: '너무 긴 컨텐츠',
-            answered: true,
-        },
-        {
-            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-            answered: true,
-        },
-        {
-            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-            answered: true,
-        },
-        {
-            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-            answered: true,
-        },
-        {
-            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-            answered: false,
-        },
-        {
-            title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-            content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-            answered: false,
-        },
-        {
-            title: '어쩌구 저쩌구',
-            content:
-                '너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠',
-            answered: true,
-        },
-        {
-            title: '너무짧은컨텐츠',
-            content:
-                '너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠',
-            answered: true,
-        },
-        {
-            title: 'title',
-            content: 'titletitletitletitletitletitle',
-            answered: false,
-        },
-    ]
+    const fundTestList = {
+        slots: [
+            {
+                title: 'title',
+                content: '너무 긴 컨텐츠',
+                answered: true,
+            },
+            {
+                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+                answered: true,
+            },
+            {
+                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+                answered: true,
+            },
+            {
+                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+                answered: true,
+            },
+            {
+                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+                answered: false,
+            },
+            {
+                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+                answered: false,
+            },
+            {
+                title: '어쩌구 저쩌구',
+                content:
+                    '너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠',
+                answered: true,
+            },
+            {
+                title: '너무짧은컨텐츠',
+                content:
+                    '너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠너무짧은컨텐츠',
+                answered: true,
+            },
+            {
+                title: 'title',
+                content: 'titletitletitletitletitletitle',
+                answered: false,
+            },
+        ],
+    }
 
-    const getSlotList = async () => {
+    const getSlotList = async (page: number) => {
         // const data = await axios.get('')
         return fundTestList
     }
-    
+
     const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-        ['InfiniteScroll'],
-        ({ pageParam = 1 }) => getSlotList(),
+        ['InfiniteSlot'],
+        ({ pageParam = 1 }) => getSlotList(pageParam),
         {
             getNextPageParam: (lastPage, allPages) => {
                 const nextPage = allPages.length + 1
@@ -109,9 +111,12 @@ const Home = () => {
                     </Link>
                 </div>
                 <div className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 ">
-                    {fundTestList.map((item: FundSlotList) => (
-                        <FundSlot title={item.title} content={item.content} answered={item.answered} />
-                    ))}
+                    {isSuccess &&
+                        data.pages.map((page) =>
+                            page.slots.map((item) => (
+                                <FundSlot title={item.title} content={item.content} answered={item.answered} />
+                            )),
+                        )}
                 </div>
             </main>
         </>

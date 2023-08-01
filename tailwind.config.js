@@ -25,11 +25,11 @@ module.exports = {
                 slideRight: 'slideRight 0.5s ease-in-out',
                 slideLeft: 'slideLeft 0.3s ease-in-out',
                 wiggle: 'wiggle 1s ease-in-out infinite',
-                tada: 'tada 1.5s ease-in-out infinite',
+                tada: 'tada 2s ease-in-out infinite',
                 zoomIn: 'zoomIn 1s',
                 zoomOut: 'zoomOut 1s',
                 flip: 'flip 1s cubic-bezier(0, 0, 0.2, 1) infinite',
-                bounce: 'bounce 1s infinite',
+                bounce: 'bounce 1.8s infinite',
                 fadein: 'fadein 0.5s',
             },
             keyframes: {

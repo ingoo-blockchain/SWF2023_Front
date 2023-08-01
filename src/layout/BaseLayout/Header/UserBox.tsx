@@ -1,8 +1,6 @@
 import DropDown from '@/src/components/dropdown'
 
 import LoadingSpinner from '@/src/components/loading/LoadingSpinner'
-import { useRouter } from 'next/router'
-import { useDisconnect } from 'wagmi'
 import DropDownMenu from './DropDownMenu'
 
 interface UserBoxProps {
@@ -12,14 +10,9 @@ interface UserBoxProps {
 }
 
 const UserBox: React.FC<UserBoxProps> = ({ isConnected, isLoading, user }) => {
-    const router = useRouter()
-    const { disconnect } = useDisconnect()
     if (!isConnected) return <></>
     if (isLoading || !user) return <LoadingSpinner />
-    const handleClick = () => {
-        disconnect()
-        router.push('/')
-    }
+
     return (
         <>
             <span>

@@ -14,8 +14,6 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
     const { user, isLoading, isConnected } = useSign()
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
 
-    console.log(user, isLoading, isConnected)
-
     return (
         <div>
             <div className="flex flex-col justify-between h-full">
