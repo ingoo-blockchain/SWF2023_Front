@@ -3,7 +3,7 @@ import UserProfile from '../profile'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
+const FundSlot: React.FC<FundSlotList> = ({ title, content, answered, user_id }) => {
     const [isAnswered, setIsAnswered] = useState<boolean>(false)
     const route = useRouter()
     useEffect(() => {
@@ -32,7 +32,7 @@ const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
                     <div className={`w-fit`}>
                         <UserProfile
                             id="@webdsadkf"
-                            name="name"
+                            name={`${user_id}`}
                             direction="none"
                             reverse
                             classes={{ id: '', name: 'font-bold text-black text-lg' }}
