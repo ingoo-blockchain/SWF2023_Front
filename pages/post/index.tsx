@@ -12,10 +12,19 @@ const inter = Inter({ subsets: ['latin'] })
 const PostBenner = styled.div`
     display: flex;
     margin: 0 auto;
-    margin-bottom: 128px;
-    & > img {
+    margin-bottom: 30px;
+    position: relative;
+    & .main-img {
+        position: absolute;
         width: 500px;
-        height: 360px;
+        top: -30px;
+        left: -190px;
+        z-index: 2;
+    }
+    & > img {
+        position: relative;
+        width: 500px;
+        background-size: contain;
         background-color: gray;
         margin-right: 78px;
     }
@@ -147,15 +156,18 @@ const Post = () => {
 
             <main className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}>
                 <PostBenner>
-                    <img alt="" />
+                    <img className="main-img" src="/static/images/banner.jpg" alt="" />
+                    <img src="/static/images/banner2.jpg" alt="" />
                     <div>
-                        <p>BlockChain</p>
-                        <h1>아무글자나 넣자</h1>
-                        <h3>아무글자나 넣자</h3>
+                        <p>SWF</p>
+                        <h1>Seoul Web 30. Festival</h1>
+                        <h3>2020 서울 Web 3.0 페스티벌</h3>
+                        <img className="w-96 mt-12" src="/static/images/logo.png" alt="" />
                     </div>
                 </PostBenner>
                 <div className="bg-white">
                     <div className="w-full">
+                        <p className="font-bold text-4xl ml-10 mb-5">content</p>
                         <PostItemWarp>
                             {isSuccess &&
                                 data.pages.map((page) =>
