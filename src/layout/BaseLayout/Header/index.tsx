@@ -57,13 +57,15 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
     return (
         <>
             <div className="relative flex flex-row justify-between">
-                <Title>LTL</Title>
+                <Title>
+                    <LinkType to="/" children={'LTL'}></LinkType>
+                </Title>
                 <Menu>
                     <li>
                         <LinkType to="/" children={'Posting'}></LinkType>
                     </li>
                     <li>
-                        <LinkType to="/dao" children={'DAO'}></LinkType>
+                        <LinkType to="/fund/slot" children={'fund'}></LinkType>
                     </li>
                 </Menu>
                 <MenuUser>
