@@ -26,7 +26,18 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
                     </div>
                 </div>
                 <div className="w-full content-end">
-                    <UserProfile id="djWJrn@web7722" name="adlkfa" direction="t" reverse />
+                    <UserProfile
+                        id="djWJrn@web7722"
+                        name="adlkfa"
+                        direction="t"
+                        reverse
+                        // children={
+                        //     <div>
+                        //         {/* <Icon className = ""/>
+                        //         <Icon className = ""/> */}
+                        //     </div>
+                        // }
+                    />
                 </div>
             </>
         </Card>
