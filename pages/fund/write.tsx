@@ -24,8 +24,11 @@ const Home = () => {
 
             <main className={`flex min-h-screen flex-col items-center justify-between p-10 ${inter.className}`}>
                 <Card>
-                    <label htmlFor="thumbnail" className="w-full flex-1 flex rounded-t-sm justify-center items-center p-8 text-white bg-gray-400 border-b border-b">
-                        <Icon icon="fluent:camera-add-20-filled" className="w-12 h-12 text-white" />
+                    <label
+                        htmlFor="thumbnail"
+                        className="w-full flex-1 flex rounded-t-sm justify-center items-center p-8 text-white bg-gray-400 border-b"
+                    >
+                        <Icon icon="fluent:image-add-20-filled" className="w-12 h-12 text-white" />
                         <span className="pl-2 text-xl font-bold">Thumbnail</span>
                     </label>
                     <input type="file" id="thumbnail" className="invisible" />
