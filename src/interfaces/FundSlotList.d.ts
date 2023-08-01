@@ -4,4 +4,5 @@ interface FundSlotList {
     content: string
     answered?: boolean
     user_id?: string
+    hash?: string
 }

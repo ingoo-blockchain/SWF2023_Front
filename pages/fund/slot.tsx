@@ -87,7 +87,10 @@ const Slot = () => {
         const { data } = await request.get<ReqeustProps[]>(`/proposal?page=${page}&limit=${10}`)
 
         const result = Promise.all(
-            data.map((item) => axios.get(`${process.env.NEXT_PUBLIC_IPFS_URL}/${item.IpfsHash}`)),
+            data.map(async (item) => {
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_IPFS_URL}/${item.IpfsHash}`)
+                return { ...data, IpfsHash: item.IpfsHash }
+            }),
         )
 
         return result
@@ -148,9 +151,7 @@ const Slot = () => {
                     <>
                         {isSuccess &&
                             data.pages.map((page) => {
-                                return page.map((item, idx) => {
-                                    console.log(item)
-                                    const { data } = item
+                                return page.map((data, idx) => {
                                     const thumbnail = data.thumbnail.replaceAll('\\', '/')
                                     return (
                                         <FundSlot
@@ -160,6 +161,7 @@ const Slot = () => {
                                             answered={data.answered}
                                             thumbnail={thumbnail}
                                             user_id={data.user.user_id}
+                                            hash={data.IpfsHash}
                                         />
                                     )
                                 })
