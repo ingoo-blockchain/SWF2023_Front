@@ -1,0 +1,249 @@
+/** end githug css **/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.preview {
+    width: 100%;
+    max-width: 980px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    color: #24292e;
+    background-color: #fff;
+}
+@media (min-width: 320px) and (max-width: 1023px) {
+    .preview {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+.preview h1,
+.preview h2,
+.preview h3,
+.preview h4,
+.preview h5,
+.preview h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #111;
+}
+
+.preview h1 {
+    font-size: 32px;
+}
+
+.preview h2 {
+    display: flex;
+    font-size: 24px;
+    padding: 5px 0;
+    align-items: center;
+    scroll-margin-top: 52px;
+    gap: 6px;
+}
+
+.preview h3 {
+    display: flex;
+    font-size: 20px;
+    padding: 5px 0;
+    align-items: center;
+    gap: 6px;
+}
+
+.preview h4 {
+    display: flex;
+    font-size: 16px;
+    padding: 5px 0;
+    align-items: center;
+    gap: 6px;
+}
+
+.preview h5 {
+    display: flex;
+    font-size: 14px;
+    padding: 5px 0;
+    align-items: center;
+    gap: 6px;
+}
+
+.preview h6 {
+    font-size: 12px;
+}
+
+.preview h2:before {
+    content: '';
+    display: inline-block;
+    border-radius: 3px;
+    width: 6px;
+    height: 24px;
+    background: #3d006d;
+}
+
+.preview p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.preview a {
+    color: #0366d6;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.preview a:hover {
+    text-decoration: underline;
+}
+
+.preview code {
+    font-size: 85%;
+    color: #d73a49;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+}
+
+.preview pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    overflow: auto;
+    word-wrap: normal;
+    padding: 16px;
+    color: #24292e;
+}
+
+.preview pre code {
+    display: block;
+    font-size: 100%;
+    line-height: 1.5;
+    overflow: auto;
+}
+
+.preview pre code::before {
+    content: '';
+}
+
+.preview pre code::after {
+    content: '';
+}
+
+.preview blockquote {
+    margin: 0;
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+}
+
+.preview blockquote > :first-child {
+    margin-top: 0;
+}
+
+.preview blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+.preview hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
+}
+
+.preview ul,
+.preview ol {
+    padding: 0 20px;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.preview ul ul,
+.preview ol ul {
+    margin-bottom: 0;
+}
+
+.preview ul li,
+.preview ol li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: calc(1em / 2);
+    padding: 5px 0;
+}
+
+.preview ul li {
+    list-style-type: disc;
+}
+
+.preview ol li {
+    list-style-type: decimal;
+}
+
+.preview ul ul li:before,
+.preview ol ul li:before {
+    content: '';
+}
+
+.preview table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 16px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.preview table th {
+    font-weight: 600;
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.preview table td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+.preview img {
+    max-width: 100%;
+    box-sizing: content-box;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.preview img[align='right'] {
+    padding-left: 20px;
+}
+
+.preview img[align='left'] {
+    padding-right: 20px;
+}
+
+.preview code {
+    font-size: 85%;
+    color: #d73a49;
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+}
+
+.preview pre code {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    line-height: 1.5;
+}
