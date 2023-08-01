@@ -29,7 +29,7 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
                         user={user}
                         setIsOpenModal={setIsOpenModal}
                     />
-                    <div className="md:container md:mx-auto px-4">{children}</div>
+                    <div className="px-4 md:container md:mx-auto">{children}</div>
                 </div>
                 <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} width="20rem" height="1.5rem">
                     <WalletList close={() => setIsOpenModal(false)} />
