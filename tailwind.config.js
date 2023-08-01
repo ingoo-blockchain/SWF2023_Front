@@ -30,6 +30,7 @@ module.exports = {
                 zoomOut: 'zoomOut 1s',
                 flip: 'flip 1s cubic-bezier(0, 0, 0.2, 1) infinite',
                 bounce: 'bounce 1s infinite',
+                fadein: 'fadein 0.5s',
             },
             keyframes: {
                 flip: {
@@ -79,9 +80,30 @@ module.exports = {
                         animation: ['hover', 'focus'],
                     },
                 },
+                fadein: {
+                    from: {
+                        opacity: 1,
+                    },
+                    to: {
+                        opacity: 0,
+                    },
+                },
+                fadeout: {
+                    from: {
+                        opacity: 0,
+                    },
+                    to: {
+                        opacity: 1,
+                    },
+                },
             },
-            backgroundColor: {
-                write: '#2086D0',
+            height: {
+                slot: '780px',
+                '900px': '900px',
+                profile: '45px'
+            },
+            width: {
+                profile: '45px'
             },
         },
         maxHeight: {
