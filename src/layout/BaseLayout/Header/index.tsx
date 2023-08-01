@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
         <>
             <div className="relative flex flex-row justify-between">
                 <Title>
-                    <LinkType to="/" children={'LTL'}></LinkType>
+                    <LinkType to="/" children={'PenPoll'}></LinkType>
                 </Title>
                 <Menu>
                     <li>
