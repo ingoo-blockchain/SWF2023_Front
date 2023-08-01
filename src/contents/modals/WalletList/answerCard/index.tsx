@@ -15,7 +15,7 @@ const AnswerCard: React.FC<AnswerCardProps> = ({}) => {
     }, [isWriteMode])
 
     return (
-        <Card>
+        <Card className='mb-5'>
             <>
                 <div className="flex justify-between">
                     <div className="w-full">

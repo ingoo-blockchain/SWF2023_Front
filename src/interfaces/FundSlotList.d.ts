@@ -3,4 +3,6 @@ interface FundSlotList {
     thumbnail: string
     content: string
     answered?: boolean
+    user_id?: string
+    hash?: string
 }

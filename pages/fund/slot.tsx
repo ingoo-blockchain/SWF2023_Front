@@ -9,65 +9,91 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import FundFilter from '@/src/contents/filter'
 import request from '@/src/utils/request'
+import { htmlToText } from '@/src/utils/htmlToText'
 const inter = Inter({ subsets: ['latin'] })
 
-const Home = () => {
+interface ReqeustProps {
+    account: Account
+    uuid: string
+    proposal_id: string
+    status: 0
+    IpfsHash: string
+    created_at: any
+}
+
+// {
+//     account: '0xB118a3CE35b206c14c51fC2653AE7f4F7434118D',
+//     uuid: 'bccf6820-fdd9-43b4-8c7b-c685baeb4903',
+//     proposal_id: '44031275621736276863324102003761290632648635910282779431148813851574920189396',
+//     status: 0,
+//     IpfsHash: 'QmYoigx9PcewKR6yid86NM9k2stmtpJ4SMvBySTtkWJWrv',
+//     created_at: 2023-08-01T06:53:07.000Z
+//   }
+
+const Slot = () => {
     const fundTestList = {
         items: [
-            {
-                title: 'title',
-                content: '너무 긴 컨텐츠',
-                answered: true,
-            },
-            {
-                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-                answered: true,
-            },
-            {
-                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-                answered: true,
-            },
-            {
-                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-                answered: true,
-            },
-            {
-                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-                answered: false,
-            },
-            {
-                title: '어쩌구 저쩌구 이거 안돼요 으아앙',
-                content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
-                answered: false,
-            },
-            {
-                title: '어쩌구 저쩌구',
-                content:
-                    '너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠',
-                answered: true,
-            },
-            {
-                title: '너무짧은컨텐츠',
-                content: '캬캬',
-                answered: true,
-            },
-            {
-                title: 'title',
-                content: 'titletitletitletitletitletitle',
-                answered: false,
-            },
+            // {
+            //     title: 'title',
+            //     content: '너무 긴 컨텐츠',
+            //     answered: true,
+            // },
+            // {
+            //     title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     answered: true,
+            // },
+            // {
+            //     title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     answered: true,
+            // },
+            // {
+            //     title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     answered: true,
+            // },
+            // {
+            //     title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     answered: false,
+            // },
+            // {
+            //     title: '어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     content: '어쩌구 저쩌구 이거 안돼요 으아앙 어쩌구 저쩌구 이거 안돼요 으아앙',
+            //     answered: false,
+            // },
+            // {
+            //     title: '어쩌구 저쩌구',
+            //     content:
+            //         '너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠너무 긴 컨텐츠',
+            //     answered: true,
+            // },
+            // {
+            //     title: '너무짧은컨텐츠',
+            //     content: '캬캬',
+            //     answered: true,
+            // },
+            // {
+            //     title: 'title',
+            //     content: 'titletitletitletitletitletitle',
+            //     answered: false,
+            // },
         ],
     }
     let slotRef = useRef(null) as React.MutableRefObject<any | null>
 
     const getSlotList = async (page: number) => {
-        const { data } = await request.get(`/proposal?page=${page}&limit=${10}`)
-        console.log(data)
-        return fundTestList
+        const { data } = await request.get<ReqeustProps[]>(`/proposal?page=${page}&limit=${10}`)
+
+        const result = Promise.all(
+            data.map(async (item) => {
+                const { data } = await axios.get(`${process.env.NEXT_PUBLIC_IPFS_URL}/${item.IpfsHash}`)
+                return { ...data, IpfsHash: item.IpfsHash }
+            }),
+        )
+
+        return result
     }
 
     const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
@@ -122,23 +148,48 @@ const Home = () => {
                     className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 scroll-m-0 scroll-p-0 scrollbar-hide"
                     ref={slotRef}
                 >
-                    {isSuccess &&
-                        data.pages.map((page) =>
-                            page.items.map((item, idx) => (
-                                <FundSlot
-                                    key={idx}
-                                    title={item.title}
-                                    content={item.content}
-                                    answered={item.answered}
-                                    thumbnail={''}
-                                />
-                            )),
-                        )}
+                    <>
+                        {isSuccess &&
+                            data.pages.map((page) => {
+                                return page.map((data, idx) => {
+                                    const thumbnail = data.thumbnail.replaceAll('\\', '/')
+                                    return (
+                                        <FundSlot
+                                            key={idx}
+                                            title={data.title}
+                                            content={htmlToText(data.content)}
+                                            answered={data.answered}
+                                            thumbnail={thumbnail}
+                                            user_id={data.user.user_id}
+                                            hash={data.IpfsHash}
+                                        />
+                                    )
+                                })
+
+                                // page.map((item, idx) => {
+                                //     console.log(item.IpfsHash)
+                                //     return <></>
+                                // })
+                            })}
+                    </>
                 </div>
             </main>
         </>
     )
 }
 
-Home.getLayout = (page: ReactElement) => <BaseLayout>{page}</BaseLayout>
-export default Home
+Slot.getLayout = (page: ReactElement) => <BaseLayout>{page}</BaseLayout>
+export default Slot
+
+// {isSuccess &&
+//     data.pages.map((page) =>
+//         page.items.map((item, idx) => (
+//             <FundSlot
+//                 key={idx}
+//                 title={item.title}
+//                 content={item.content}
+//                 answered={item.answered}
+//                 thumbnail={''}
+//             />
+//         )),
+//     )}

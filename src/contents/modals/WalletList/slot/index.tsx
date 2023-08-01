@@ -3,21 +3,21 @@ import UserProfile from '../profile'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
+const FundSlot: React.FC<FundSlotList> = ({ title, content, answered, user_id, hash }) => {
     const [isAnswered, setIsAnswered] = useState<boolean>(false)
     const route = useRouter()
     useEffect(() => {
         setIsAnswered(!!answered)
     }, [answered])
 
-    const onOpenView = () => {
-        route.push('/fund/view')
+    const onOpenView = (hash: string | undefined) => () => {
+        route.push(`/fund/view/${hash}`)
     }
 
     return (
         <>
-            <Card className="hover:bg-gray-100">
-                <section className="flex p-5 shadow-xl justify-between" onClick={onOpenView}>
+            <Card className="hover:bg-gray-100 mb-5">
+                <section className="flex p-5 shadow-xl justify-between" onClick={onOpenView(hash)}>
                     <div className={`w-2/3`}>
                         <h3 className="w-full pb-2 font-bold">
                             {isAnswered ? <span className="mr-2 text-red-700">{'[Published]'}</span> : <></>}
@@ -32,7 +32,7 @@ const FundSlot: React.FC<FundSlotList> = ({ title, content, answered }) => {
                     <div className={`w-fit`}>
                         <UserProfile
                             id="@webdsadkf"
-                            name="name"
+                            name={`${user_id}`}
                             direction="none"
                             reverse
                             classes={{ id: '', name: 'font-bold text-black text-lg' }}
