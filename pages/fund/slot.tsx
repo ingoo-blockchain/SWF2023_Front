@@ -4,14 +4,14 @@ import BaseLayout from '@/src/layout/BaseLayout'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import Link from 'next/link'
-import { ReactElement, useEffect } from 'react'
+import { ReactElement, useEffect, useRef } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
 const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
     const fundTestList = {
-        slots: [
+        items: [
             {
                 title: 'title',
                 content: '너무 긴 컨텐츠',
@@ -61,9 +61,9 @@ const Home = () => {
             },
         ],
     }
+    let slotRef = useRef(null) as React.MutableRefObject<any | null>
 
     const getSlotList = async (page: number) => {
-        // const data = await axios.get('')
         return fundTestList
     }
 
@@ -79,18 +79,21 @@ const Home = () => {
     )
 
     useEffect(() => {
+        if (!slotRef.current) return
+
         let fetching = false
         const handleScroll = async (e: any) => {
-            const { scrollHeight, scrollTop, clientHeight } = e.target.scrollingElement
-            if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+            if (!e.target) return
+            if (!fetching && e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight * 1.2) {
                 fetching = true
                 if (hasNextPage) await fetchNextPage()
                 fetching = false
             }
         }
-        document.addEventListener('scroll', handleScroll)
+
+        slotRef.current.addEventListener('scroll', handleScroll)
         return () => {
-            document.removeEventListener('scroll', handleScroll)
+            slotRef.current.removeEventListener('scroll', handleScroll)
         }
     }, [fetchNextPage, hasNextPage])
 
@@ -110,11 +113,19 @@ const Home = () => {
                         </Button>
                     </Link>
                 </div>
-                <div className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 ">
+                <div
+                    className="h-slot w-full flex flex-col items-center justify-start overflow-x-auto pr-1 pl-1 "
+                    ref={slotRef}
+                >
                     {isSuccess &&
                         data.pages.map((page) =>
-                            page.slots.map((item) => (
-                                <FundSlot title={item.title} content={item.content} answered={item.answered} />
+                            page.items.map((item, idx) => (
+                                <FundSlot
+                                    key={idx}
+                                    title={item.title}
+                                    content={item.content}
+                                    answered={item.answered}
+                                />
                             )),
                         )}
                 </div>
