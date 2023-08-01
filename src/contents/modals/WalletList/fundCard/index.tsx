@@ -2,7 +2,8 @@ import Card from '@/src/components/card'
 import UserProfile from '../profile'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { useEffect, useState } from 'react'
-
+import { useContract } from '@/src/hooks/ethers'
+import request from '@/src/utils/request'
 interface FundCardProps {
     info: FundSlotList
     // title: string
@@ -12,10 +13,12 @@ interface FundCardProps {
 const FundCard: React.FC<FundCardProps> = ({ info }) => {
     const [animate, setAnimate] = useState<string>('')
     const [clicked, setClicked] = useState<string | null>(null)
-    const onVote = (type: string) => {
+    const onVote = async (type: string) => {
+        const { governor } = useContract()
         if (!clicked) {
             setClicked(type)
             setAnimate('animate-tada')
+            await request.get('/')
         }
     }
 
@@ -53,6 +56,7 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
                         name="adlkfa"
                         direction="none"
                         reverse
+                        imgPath={info.thumbnail}
                         children={
                             <div className="w-fit flex items-center">
                                 {/* <Icon icon="bx:upvote" className={`text-gray-500 w-10 h-10 m-2`} /> */}
