@@ -147,7 +147,7 @@ const Post = () => {
 
     return (
         <>
-            <ProgressCircle />
+            {/* <ProgressCircle /> */}
             <Head>
                 <title>리뷰 - 메인페이지</title>
             </Head>
