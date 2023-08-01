@@ -10,6 +10,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ReactElement, useEffect, useState } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
+import request from '@/src/utils/request'
 const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
