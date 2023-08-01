@@ -6,6 +6,7 @@ import { useContract } from '@/src/hooks/ethers'
 import request from '@/src/utils/request'
 import { useRouter } from 'next/router'
 import { Alert } from '@/src/components/common/alert'
+import { MarkDown } from '@/src/contents/markdown'
 interface FundCardProps {
     info: FundSlotList
     // title: string
@@ -81,7 +82,9 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
                     </div>
                 </div>
                 <div id="content" className={`w-full grow overflow-auto-y p-5 h-4/5`}>
-                    <div className="h-full overflow-y-auto  scrollbar-hide">{info.content}</div>
+                    <div className="h-full overflow-y-auto  scrollbar-hide">
+                        <MarkDown source={info.content}></MarkDown>
+                    </div>
                 </div>
                 {/* <div className="w-full content-end"> */}
                 <div className="w-full content-end  bottom-0 absolute bg-white border-t h-1/10">
