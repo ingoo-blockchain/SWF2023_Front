@@ -1,5 +1,7 @@
 import MetaMask from '@/src/components/icons/metamask'
 import withLoading from '@/src/components/loading'
+import request from '@/src/utils/request'
+import { useEffect } from 'react'
 import tw from 'tailwind-styled-components'
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
@@ -32,18 +34,27 @@ interface WalletListProps {
 }
 
 const WalletList: React.FC<WalletListProps> = ({ close }) => {
-    const { isConnected } = useAccount()
+    const { isConnected, address } = useAccount()
     const { connect, connectors, error, isLoading, pendingConnector } = useConnect()
+
     const { disconnect } = useDisconnect()
     const LoginText = withLoading(LoginTextBox)
 
-    const handleConnect = (type: string) => () => {
+    const handleConnect = (type: string) => async () => {
         if (isConnected) return disconnect()
         const provider = connectors.find((x) => x.ready && type === x.id)
-
         connect({ connector: provider })
+
         close()
     }
+
+    useEffect(() => {
+        if (!address) return
+        ;(async () => {
+            const { data } = await request.post('/users', { account: address })
+            console.log(data)
+        })()
+    }, [address])
 
     return (
         <>
