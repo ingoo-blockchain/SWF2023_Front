@@ -8,6 +8,7 @@ interface FundCardProps {
     // title: string
     // content: string
 }
+
 const FundCard: React.FC<FundCardProps> = ({ info }) => {
     const [animate, setAnimate] = useState<string>('')
     const [clicked, setClicked] = useState<string | null>(null)
@@ -26,28 +27,31 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
     }, [clicked])
 
     return (
-        <Card>
+        <Card className="relative h-full mb-0">
             <>
-                <div className={`w-full flex flex-col min-h-fit p-5`}>
-                    <div className={`flex justify-between pb-10`}>
-                        <h3 className="w-full">
-                            {/* <span className={`bg-red-700 text-white text-4xl font-semibold mr-3 p-1`}>Q.</span> */}
-                            <span className={`text-4xl text-black font-semibold`}>{info.title}</span>
+                <div className={`w-full flex flex-col p-5 h-1/10 `}>
+                    {/* <div className='bg-gray-200 flex-1'>
+
+                    </div> */}
+                    <div className={`flex justify-between h-fit `}>
+                        <h3 className="w-2/3 h-4/5">
+                            <span className={`text-3xl text-black font-semibold`}>{info.title}</span>
                         </h3>
-                        <div className={`w-1/3 text-right`}>
+                        <div className={`w-1/3 text-right h-full`}>
                             <span className={`text-2xl`}>{'0.00001 ETH'}</span>
                             <span className={`text-xs text-gray-300`}>{`(약 100,000원)`}</span>
                         </div>
                     </div>
-                    <div id="content" className={`flex justify-between `}>
-                        {info.content}
-                    </div>
                 </div>
-                <div className="w-full content-end">
+                <div id="content" className={`w-full grow overflow-auto-y p-5 h-4/5`}>
+                    <div className="h-full overflow-y-auto  scrollbar-hide">{info.content}</div>
+                </div>
+                {/* <div className="w-full content-end"> */}
+                <div className="w-full content-end  bottom-0 absolute bg-white border-t h-1/10">
                     <UserProfile
                         id="djWJrn@web7722"
                         name="adlkfa"
-                        direction="t"
+                        direction="none"
                         reverse
                         children={
                             <div className="w-fit flex items-center">
@@ -59,7 +63,9 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
                                     }`}
                                     onClick={() => onVote('y')}
                                 />
-                                <span className={`text-${clicked === 'y' ? 'red' : 'gray'}-500 text-xl font-semibold`}>0</span>
+                                <span className={`text-${clicked === 'y' ? 'red' : 'gray'}-500 text-xl font-semibold`}>
+                                    0
+                                </span>
                                 <Icon
                                     icon={`bx${clicked === 'n' ? 's' : ''}:downvote`}
                                     className={`text-${clicked === 'n' ? 'red' : 'gray'}-500 w-10 h-10 m-2 ${
@@ -67,7 +73,9 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
                                     }`}
                                     onClick={() => onVote('n')}
                                 />
-                                <span className={`text-${clicked === 'n' ? 'red' : 'gray'}-500 text-xl font-semibold`}>0</span>
+                                <span className={`text-${clicked === 'n' ? 'red' : 'gray'}-500 text-xl font-semibold`}>
+                                    0
+                                </span>
                             </div>
                         }
                     />

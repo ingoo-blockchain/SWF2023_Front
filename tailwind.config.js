@@ -100,11 +100,15 @@ module.exports = {
             height: {
                 slot: '780px',
                 '900px': '900px',
-                profile: '45px'
+                profile: '45px',
+                '1/10': '10%'
             },
             width: {
-                profile: '45px'
+                profile: '45px',
             },
+            backdropBlur: {
+                '40': '40%'
+            }
         },
         maxHeight: {
             0: '0',
@@ -118,5 +122,4 @@ module.exports = {
             full: '100%',
         },
     },
-    plugins: [],
-}
+    plugins: [require("tailwind-scrollbar-hide")],}
