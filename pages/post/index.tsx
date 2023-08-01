@@ -159,9 +159,12 @@ const Post = () => {
                     <img className="main-img" src="/static/images/banner.jpg" alt="" />
                     <img src="/static/images/banner2.jpg" alt="" />
                     <div>
-                        <p>SWF</p>
-                        <h1>Seoul Web 30. Festival</h1>
-                        <h3>2020 서울 Web 3.0 페스티벌</h3>
+                        <p className="italic">PenPoll</p>
+                        <h1>"야" 너두 할 수 있어</h1>
+                        <h1> 낭만 코딩</h1>
+                        <br />
+                        <h3>누구나 참여 가능한 검증된</h3>
+                        <h3>지식 공간</h3>
                         <img className="w-96 mt-12" src="/static/images/logo.png" alt="" />
                     </div>
                 </PostBenner>
