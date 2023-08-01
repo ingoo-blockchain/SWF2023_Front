@@ -12,7 +12,7 @@ const Home = () => {
                 <title>리뷰 - 메인페이지</title>
             </Head>
 
-            <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
+            <main className={`flex min-h-screen flex-col items-center justify-between p-16 ${inter.className}`}>
                 <Post></Post>
             </main>
         </>

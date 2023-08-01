@@ -65,9 +65,6 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
                     <li>
                         <LinkType to="/dao" children={'DAO'}></LinkType>
                     </li>
-                    <li>
-                        <LinkType to="/punding" children={'Punding'}></LinkType>
-                    </li>
                 </Menu>
                 <MenuUser>
                     <li className="user-box-warp">
