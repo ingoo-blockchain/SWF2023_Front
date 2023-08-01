@@ -10,6 +10,7 @@ import { FileInputCircle } from '@/src/components/common/input/fileinputcircle'
 import { Alert } from '@/src/components/common/alert'
 import { useSign } from '@/src/hooks/useSign'
 import { Inter } from 'next/font/google'
+import { useRouter } from 'next/router'
 const inter = Inter({ subsets: ['latin'] })
 // import { MyNFT, Activity, Favorites } from './index'
 
@@ -22,14 +23,15 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const ProfileCard = () => {
     const [isOpenAlert, setIsOpenAlert] = useState(false)
-    const [modify, setModify] = useState(false)
+    const router = useRouter()
+    // const [modify, setModify] = useState(false)
     const [userImg, setUserImg] = useState<string>('')
     const [activeTab, setActiveTab] = useState('myWrite')
     const { user, isLoading, isConnected } = useSign()
-    const [days, setDays] = useState<number>(0)
-    const [hours, setHours] = useState<number>(0)
-    const [minutes, setMinutes] = useState<number>(0)
-    const [seconds, setSeconds] = useState<number>(0)
+    // const [days, setDays] = useState<number>(0)
+    // const [hours, setHours] = useState<number>(0)
+    // const [minutes, setMinutes] = useState<number>(0)
+    // const [seconds, setSeconds] = useState<number>(0)
 
     console.log(user, isLoading, isConnected)
 
@@ -37,9 +39,9 @@ export const ProfileCard = () => {
         setActiveTab(tab)
     }
 
-    const handleUpdate = async () => {
-        setModify((prevState) => !prevState)
-
+    const handleModify = async () => {
+        router.push('/modify')
+        // setModify((prevState) => !prevState)
         // if (modify) {
         //     const res = await request.put('auth/update', {
         //         address: user!.address,
@@ -63,40 +65,25 @@ export const ProfileCard = () => {
             {user && (
                 <ProfileCardWrap>
                     <div className="absolute top-5 right-5 w-28">
-                        <Button
-                            {...(!modify ? { color: 'blue' } : { color: 'green' })}
-                            fontSize="sm"
-                            onClick={handleUpdate}
-                        >
+                        <Button {...{ color: 'blue' }} fontSize="sm" onClick={handleModify}>
                             <Icon icon="bxs:edit" className="mr-1 text-lg" />
-                            {!modify ? 'Edit' : 'Confirm'}
+                            회원 수정
                         </Button>
                     </div>
                     <div className="flex justify-center">
                         <div className="absolute w-32 h-32 mx-auto transition duration-200 transform border-4 border-white rounded-full shadow-md -top-20 hover:scale-110">
-                            {!modify ? (
-                                <Image
-                                    // src={user ? `${user?.userImg}` : '/static/images/1.jpg'}
-                                    src={'/static/images/1.jpg'}
-                                    alt="user"
-                                    width={200}
-                                    height={200}
-                                    className="w-full h-full rounded-full"
-                                />
-                            ) : (
-                                <FileInputCircle state={userImg} setState={setUserImg} />
-                            )}
+                            <Image
+                                // src={user ? `${user?.userImg}` : '/static/images/1.jpg'}
+                                src={'/static/images/1.jpg'}
+                                alt="user"
+                                width={200}
+                                height={200}
+                                className="w-full h-full rounded-full"
+                            />
                         </div>
                     </div>
                     <div className="mt-16">
-                        {!modify ? (
-                            <h1 className="text-3xl font-bold text-center">{user?.name}</h1>
-                        ) : (
-                            <div className="flex items-center justify-center">
-                                <InputBox value={user?.name} fontSize="xl" />
-                            </div>
-                        )}
-
+                        <h1 className="text-3xl font-bold text-center">{user?.name}</h1>
                         <div className="px-6 my-5">
                             <UserAddress onClick={handleCopy}>
                                 {user!.address.slice(0, 6) + '...' + user!.address.slice(-4)}
