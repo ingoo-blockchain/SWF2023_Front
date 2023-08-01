@@ -31,8 +31,8 @@ const FundSlot: React.FC<FundSlotList> = ({ title, content, answered, user_id, h
                     </div>
                     <div className={`w-fit`}>
                         <UserProfile
-                            id="@webdsadkf"
-                            name={`${user_id}`}
+                            id={`@${user_id}`}
+                            name={`Silver`}
                             direction="none"
                             reverse
                             classes={{ id: '', name: 'font-bold text-black text-lg' }}
