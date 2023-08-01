@@ -10,12 +10,14 @@ import { ChangeEvent, FormEvent, ReactElement, useEffect, useState } from 'react
 import { useAccount } from 'wagmi'
 import { useContract } from '@/src/hooks/ethers'
 import request from '@/src/utils/request'
+import { useRouter } from 'next/router'
 const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
     const [value, setValue] = useState<string>('')
     const [realPath, setRealPath] = useState<string>('')
     const { isConnected, address } = useAccount()
+    const router = useRouter()
     interface DaoWriteProps {
         title: HTMLInputElement
         content: HTMLInputElement
@@ -41,7 +43,7 @@ const Home = () => {
         formData.append('content', content)
         formData.append('thumbnail', file.files[0])
         const {
-            data: { account, uuid, ipfs },
+            data: { account, uuid, ipfs, IpfsHash },
         } = await request.post('/proposal', formData, {
             headers: { Authorization: `Bearer ${address}`, 'Content-Type': 'multipart/form-data' },
         })
@@ -53,6 +55,7 @@ const Home = () => {
         console.log(proposalId.toString())
         const proposal_id = proposalId.toString()
         await request.patch('/proposal', { uuid, proposal_id })
+        router.push(`/fund/view/${IpfsHash}`)
     }
     return (
         <form onSubmit={writeHandler}>

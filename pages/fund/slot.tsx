@@ -8,6 +8,7 @@ import { ReactElement, useEffect, useRef } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import FundFilter from '@/src/contents/filter'
+import request from '@/src/utils/request'
 const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
@@ -64,6 +65,8 @@ const Home = () => {
     let slotRef = useRef(null) as React.MutableRefObject<any | null>
 
     const getSlotList = async (page: number) => {
+        const { data } = await request.get(`/proposal?page=${page}&limit=${10}`)
+        console.log(data)
         return fundTestList
     }
 
@@ -127,6 +130,7 @@ const Home = () => {
                                     title={item.title}
                                     content={item.content}
                                     answered={item.answered}
+                                    thumbnail={''}
                                 />
                             )),
                         )}
