@@ -6,6 +6,9 @@ import PostItem from '../../src/contents/PostCard'
 import styled from 'styled-components'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import FundFilter from '@/src/contents/filter'
+import LoadingSpinner from '@/src/components/loading/LoadingSpinner'
+import ProgressCircle from '@/src/contents/progress'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,12 +49,6 @@ const PostBenner = styled.div`
     }
 `
 
-const PostItemWarp = styled.div`
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-`
 const obj = {
     items: [
         {
@@ -150,6 +147,7 @@ const Post = () => {
 
     return (
         <>
+            <ProgressCircle />
             <Head>
                 <title>리뷰 - 메인페이지</title>
             </Head>
@@ -168,30 +166,30 @@ const Post = () => {
                         <img className="w-96 mt-12" src="/static/images/logo.png" alt="" />
                     </div>
                 </PostBenner>
-                <div className="bg-white">
-                    <div className="w-full">
-                        <p className="font-bold text-4xl ml-10 mb-5">content</p>
-                        <PostItemWarp>
-                            {isSuccess &&
-                                data.pages.map((page) =>
-                                    page.items.map((item, index) => (
-                                        <div key={index}>
-                                            <PostItem
-                                                thumbnail={item.thumbnail}
-                                                profile={item.profile}
-                                                title={item.title}
-                                                content={item.content}
-                                                date={item.date}
-                                                writer={item.writer}
-                                                url={item.url}
-                                            ></PostItem>
-                                        </div>
-                                    )),
-                                )}
-                        </PostItemWarp>
-                        {isFetchingNextPage ? 'loading...' : null}
+                <section className="w-full mt-20 pr-10 pl-10">
+                    <div className="flex justify-between mb-10 items-center">
+                        <h1 className="font-bold text-4xl ">Contents</h1>
+                        <FundFilter />
                     </div>
-                </div>
+                    <article className="grid grid-cols-3 gap-10">
+                        {isSuccess &&
+                            data.pages.map((page) =>
+                                page.items.map((item, index) => (
+                                    <PostItem
+                                        key={`postcard-${index}`}
+                                        thumbnail={item.thumbnail}
+                                        profile={item.profile}
+                                        title={item.title}
+                                        content={item.content}
+                                        date={item.date}
+                                        writer={item.writer}
+                                        url={item.url}
+                                    />
+                                )),
+                            )}
+                    </article>
+                    {isFetchingNextPage ? <LoadingSpinner /> : null}
+                </section>
             </main>
         </>
     )

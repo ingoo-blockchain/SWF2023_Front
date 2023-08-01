@@ -14,7 +14,7 @@ const FundFilter: React.FC<FundFilterProps> = ({}) => {
         // e.target?
     }
     return (
-        <article className="flex">
+        <article className="flex ">
             {/* <Button
                 color={`${selected !== 'All' ? 'gray' : 'red'}`}
                 size="w-fit"
@@ -33,7 +33,7 @@ const FundFilter: React.FC<FundFilterProps> = ({}) => {
                     key={`btn-${category}`}
                     color={`${selected !== category ? 'gray' : 'red'}`}
                     size="w-fit"
-                    style={`pr-5 pl-5 pt-2 pb-2 mt-4 mb-4 mr-4 ${selected !== category ? 'text-black' : ''}`}
+                    style={`pr-5 pl-5 pt-2 pb-2 mt-4 mr-4 hover:animate-bounce ${selected !== category ? 'text-black' : ''}`}
                     fontSize="sm"
                     fontWeight="semiBold"
                     onClick={() => filterList(category)}

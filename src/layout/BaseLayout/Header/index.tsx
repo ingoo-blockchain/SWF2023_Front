@@ -56,7 +56,7 @@ const MenuUser = styled.ul`
 const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpenModal }) => {
     return (
         <>
-            <div className="relative flex flex-row justify-between">
+            <div className="relative flex flex-row justify-between border-b">
                 <Title>
                     <LinkType to="/" children={'PenPoll'}></LinkType>
                 </Title>
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ isConnected, isLoading, user, setIsOpen
                     </li>
                 </MenuUser>
             </div>
-            <div className="w-full h-6 bg-gray-200"></div>
+            {/* <div className="w-full h-6 bg-gray-200"></div> */}
         </>
     )
 }
