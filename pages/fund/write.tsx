@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 const Home = () => {
     const [value, setValue] = useState<string>('')
+    const [realPath, setRealPath] = useState<string>('')
 
     const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
         setValue(String(e.target.value))
@@ -26,7 +27,7 @@ const Home = () => {
                 <Card>
                     <label
                         htmlFor="thumbnail"
-                        className="w-full flex-1 flex rounded-t-sm justify-center items-center p-8 text-white bg-gray-400 border-b"
+                        className={`w-full flex-1 flex rounded-t-sm justify-center items-center p-8 text-white bg-gray-400 border-b `}
                     >
                         <Icon icon="fluent:image-add-20-filled" className="w-12 h-12 text-white" />
                         <span className="pl-2 text-xl font-bold">Thumbnail</span>

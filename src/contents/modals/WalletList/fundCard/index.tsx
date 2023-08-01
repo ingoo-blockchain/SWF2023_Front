@@ -1,5 +1,7 @@
 import Card from '@/src/components/card'
 import UserProfile from '../profile'
+import { Icon } from '@iconify/react/dist/iconify.js'
+import { useEffect, useState } from 'react'
 
 interface FundCardProps {
     info: FundSlotList
@@ -7,6 +9,22 @@ interface FundCardProps {
     // content: string
 }
 const FundCard: React.FC<FundCardProps> = ({ info }) => {
+    const [animate, setAnimate] = useState<string>('')
+    const [clicked, setClicked] = useState<string | null>(null)
+    const onVote = (type: string) => {
+        if (!clicked) {
+            setClicked(type)
+            setAnimate('animate-tada')
+        }
+    }
+
+    useEffect(() => {
+        if (clicked)
+            setTimeout(() => {
+                setAnimate('')
+            }, 500)
+    }, [clicked])
+
     return (
         <Card>
             <>
@@ -31,12 +49,27 @@ const FundCard: React.FC<FundCardProps> = ({ info }) => {
                         name="adlkfa"
                         direction="t"
                         reverse
-                        // children={
-                        //     <div>
-                        //         {/* <Icon className = ""/>
-                        //         <Icon className = ""/> */}
-                        //     </div>
-                        // }
+                        children={
+                            <div className="w-fit flex items-center">
+                                {/* <Icon icon="bx:upvote" className={`text-gray-500 w-10 h-10 m-2`} /> */}
+                                <Icon
+                                    icon={`bx${clicked === 'y' ? 's' : ''}:upvote`}
+                                    className={`text-${clicked === 'y' ? 'red' : 'gray'}-500 w-10 h-10 m-2 ${
+                                        clicked === 'y' && animate
+                                    }`}
+                                    onClick={() => onVote('y')}
+                                />
+                                <span className={`text-${clicked === 'y' ? 'red' : 'gray'}-500 text-xl font-semibold`}>0</span>
+                                <Icon
+                                    icon={`bx${clicked === 'n' ? 's' : ''}:downvote`}
+                                    className={`text-${clicked === 'n' ? 'red' : 'gray'}-500 w-10 h-10 m-2 ${
+                                        clicked === 'n' && animate
+                                    }`}
+                                    onClick={() => onVote('n')}
+                                />
+                                <span className={`text-${clicked === 'n' ? 'red' : 'gray'}-500 text-xl font-semibold`}>0</span>
+                            </div>
+                        }
                     />
                 </div>
             </>
